@@ -1,4 +1,4 @@
-import { Compare } from '../types'
+export type Compare<T> = (a: T, b: T) => boolean
 
 export class Heap<T> {
   private map = new Map<T, number>()
