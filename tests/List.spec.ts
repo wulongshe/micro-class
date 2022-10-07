@@ -1,6 +1,8 @@
 import { test, expect } from 'vitest'
 import { List } from '../src'
 
+/* List 继承自 Array，Array 自带的方法不再测试 */
+
 test('List slice', async () => {
   const list = new List<number>([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
   expect(list).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
