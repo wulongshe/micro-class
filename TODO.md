@@ -7,6 +7,11 @@
 > 22/10/07
 
 - [ ] Stack
-- [ ] Vector
+- [x] List
 - [ ] Heap
-- [ ] Set
+- [ ] MiSet
+
+> 22/10/08
+
+- [ ] TreeSet
+- [ ] Vector

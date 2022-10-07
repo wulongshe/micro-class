@@ -14,9 +14,10 @@ yarn i micro-class
 pnpm i micro-class
 ```
 
-## 使用
+## 案例
 
 ```ts
+/* 并查集 */
 import { UnionQuerySet } from "micro-class";
 
 // 初始化并查集，设置默认权重为 0，
@@ -34,3 +35,19 @@ unionQuerySet.join("a", "b", 2);
 // 查找 a 所属集合
 unionQuerySet.find("a"); // { value: 2, to: "b" }
 ```
+
+```ts
+/* 列表 */
+import { List } from 'micro-class'
+
+const list = new List([0, 1, 2, 3, 4])
+
+// 切片
+list[':-2:-1']  // [3, 2, 1, 0]
+```
+
+## 测试用例
+
+> 更多使用方法请参考 [测试用例](https://github.com/Yuki-0505/micro-class/tree/main/tests)
+- [UnionQuerySet](https://github.com/Yuki-0505/micro-class/blob/main/tests/UnionQuerySet.spec.ts)
+- [List](https://github.com/Yuki-0505/micro-class/blob/main/tests/UnionQuerySet.spec.ts)
