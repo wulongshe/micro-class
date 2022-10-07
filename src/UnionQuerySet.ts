@@ -38,14 +38,12 @@ export class UnionQuerySet<K extends string | number | symbol = any, V = unknown
     }
     const toTop = this.find(to)!
     if (toTop.to === fromTop.to) return
-    console.log(fromTop, toTop)
     this.set[fromTop.to] = {
       ...(reduce && fromTop.value != void 0 && toTop.value != void 0 && value != void 0
         ? { value: reduce(reduce(toTop.value, value, true), fromTop.value, false) }
         : {}),
       to: toTop.to
     }
-    console.log(this.set)
   }
 
   // 查找两点同属于一个组时的共同顶点 top，及两点的关系 value
