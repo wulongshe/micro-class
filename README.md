@@ -53,3 +53,4 @@ list[':-2:-1']  // [3, 2, 1, 0]
 - [List](https://github.com/Yuki-0505/micro-class/blob/main/tests/List.spec.ts)
 - [Stack](https://github.com/Yuki-0505/micro-class/blob/main/tests/Stack.spec.ts)
 - [MiSet](https://github.com/Yuki-0505/micro-class/blob/main/tests/MiSet.spec.ts)
+- [Heap](https://github.com/Yuki-0505/micro-class/blob/main/tests/Heap.spec.ts)
