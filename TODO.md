@@ -6,10 +6,10 @@
 
 > 22/10/07
 
-- [ ] Stack
+- [x] Stack
 - [x] List
-- [ ] Heap
-- [ ] MiSet
+- [x] Heap
+- [x] MiSet
 
 > 22/10/08
 
