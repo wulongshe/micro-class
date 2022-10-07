@@ -38,21 +38,26 @@ export class UnionQuerySet<K extends string | number | symbol = any, V = unknown
     }
     const toTop = this.find(to)!
     if (toTop.to === fromTop.to) return
-    console.log(fromTop.value, toTop.value, value)
+    console.log(fromTop, toTop)
     this.set[fromTop.to] = {
       ...(reduce && fromTop.value != void 0 && toTop.value != void 0 && value != void 0
         ? { value: reduce(reduce(toTop.value, value, true), fromTop.value, false) }
         : {}),
       to: toTop.to
     }
-    console.log(this.set[fromTop.to])
+    console.log(this.set)
   }
 
-  // 查找是否同属于一个组
-  jointly(x: K, y: K): { value: [v1?: V, v2?: V], top: K } | null {
+  // 查找两点同属于一个组时的共同顶点 top，及两点的关系 value
+  jointly(x: K, y: K): { value?: V, top: K } | null {
     const topX = this.find(x), topY = this.find(y)
     return topX && topY && topX.to === topY.to
-      ? { value: [topX.value, topY.value], top: topX.to }
+      ? {
+        ...topX.value != void 0 && topY.value != void 0 && this.reduce
+          ? { value: this.reduce(topX.value, topY.value, false) }
+          : {},
+        top: topX.to
+      }
       : null
   }
 }
