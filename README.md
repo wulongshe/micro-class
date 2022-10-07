@@ -50,4 +50,4 @@ list[':-2:-1']  // [3, 2, 1, 0]
 
 > 更多使用方法请参考 [测试用例](https://github.com/Yuki-0505/micro-class/tree/main/tests)
 - [UnionQuerySet](https://github.com/Yuki-0505/micro-class/blob/main/tests/UnionQuerySet.spec.ts)
-- [List](https://github.com/Yuki-0505/micro-class/blob/main/tests/UnionQuerySet.spec.ts)
+- [List](https://github.com/Yuki-0505/micro-class/blob/main/tests/List.spec.ts)
