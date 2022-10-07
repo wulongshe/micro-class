@@ -1,6 +1,6 @@
 {
   "name": "micro-class",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "shewulong",
   "license": "ISC",
   "description": "扩展 js/ts 的 工具类 和 数据结构",
@@ -12,6 +12,11 @@
     "test": "vitest",
     "test:run": "vitest run"
   },
+  "files": [
+    "dist",
+    "src",
+    "types"
+  ],
   "engines": {
     "node": ">=16.0.0"
   },
