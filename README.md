@@ -43,7 +43,7 @@ import { List } from 'micro-class'
 const list = new List([0, 1, 2, 3, 4])
 
 // 切片
-list[':-2:-1']  // [3, 2, 1, 0]
+list[':-5:-1']  // [4, 3, 2, 1]
 ```
 
 ## 测试用例
