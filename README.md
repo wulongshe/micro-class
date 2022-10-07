@@ -52,3 +52,4 @@ list[':-2:-1']  // [3, 2, 1, 0]
 - [UnionQuerySet](https://github.com/Yuki-0505/micro-class/blob/main/tests/UnionQuerySet.spec.ts)
 - [List](https://github.com/Yuki-0505/micro-class/blob/main/tests/List.spec.ts)
 - [Stack](https://github.com/Yuki-0505/micro-class/blob/main/tests/Stack.spec.ts)
+- [MiSet](https://github.com/Yuki-0505/micro-class/blob/main/tests/MiSet.spec.ts)
