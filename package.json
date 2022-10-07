@@ -7,6 +7,7 @@
   "type": "module",
   "module": "src/index.ts",
   "main": "src/index.ts",
+  "repository": "https://github.com/Yuki-0505/micro-class.git",
   "scripts": {
     "test": "vitest",
     "test:run": "vitest run"
