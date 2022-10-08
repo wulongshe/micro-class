@@ -1,3 +1,7 @@
+export interface List<T> {
+  [key: string]: any
+}
+
 export class List<T> extends Array<T> {
   constructor(items: T[] = []) {
     super()
