@@ -18,6 +18,7 @@
   "types": "src/index.ts",
   "repository": "https://github.com/Yuki-0505/micro-class.git",
   "scripts": {
+    "build": "tsc",
     "test": "vitest",
     "test:run": "vitest run"
   },
