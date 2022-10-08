@@ -4,11 +4,18 @@
   "author": "shewulong",
   "license": "ISC",
   "description": "扩展 js/ts 的 工具类 和 数据结构",
-  "keywords": ["oop", "data structure", "algorithm", "js", "ts", "class"],
+  "keywords": [
+    "oop",
+    "data structure",
+    "algorithm",
+    "js",
+    "ts",
+    "class"
+  ],
   "type": "commonjs",
   "module": "src/index.ts",
   "main": "dist/index.js",
-  "types": "dist/types",
+  "types": "src/index.ts",
   "repository": "https://github.com/Yuki-0505/micro-class.git",
   "scripts": {
     "test": "vitest",
@@ -16,8 +23,7 @@
   },
   "files": [
     "dist",
-    "src",
-    "types"
+    "src"
   ],
   "engines": {
     "node": ">=16.0.0"
