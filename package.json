@@ -1,9 +1,10 @@
 {
   "name": "micro-class",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "author": "shewulong",
   "license": "ISC",
   "description": "扩展 js/ts 的 工具类 和 数据结构",
+  "keywords": ["oop", "data structure", "algorithm", "js", "ts", "class"],
   "type": "module",
   "module": "src/index.ts",
   "main": "src/index.ts",
