@@ -17,3 +17,7 @@
 - [ ] SegmentTree
 - [ ] TreeSet
 - [ ] Vector
+
+> 22/10/09
+
+- [x] MergeIntervalTree
