@@ -17,6 +17,9 @@
   "main": "dist/index.js",
   "types": "src/index.ts",
   "repository": "https://github.com/Yuki-0505/micro-class.git",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "scripts": {
     "build": "tsc",
     "test": "vitest",
