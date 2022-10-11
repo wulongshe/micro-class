@@ -119,6 +119,29 @@ export class BinarySearchTree<T> {
     this._traverse(trace)
   }
 
+  values(): IterableIterator<T> {
+    const stack: TreeNode<T>[] = []
+    const recursive = (node = this.root) => {
+      while (node) {
+        stack.push(node)
+        node = node.left
+      }
+    }
+
+    const iterator = () => ({
+      [Symbol.iterator]: iterator,
+      next: (): IteratorResult<T, undefined> => {
+        const node = stack.pop()
+        if (!node) return { value: void 0, done: true }
+        recursive(node.right)
+        return { value: node.value, done: false }
+      }
+    })
+
+    recursive()
+    return iterator()
+  }
+
   size(): number {
     return this.root ? this.root.count : 0
   }
