@@ -1,13 +1,11 @@
+import { Compare, Trace } from './types'
+
 export type TreeNode<T> = {
   value: T
   count: number
   left: TreeNode<T> | null
   right: TreeNode<T> | null
 }
-
-export type Trace<T> = (value: T) => void
-
-export type Compare<T> = (a: T, b: T) => number
 
 export class BinarySearchTree<T> {
   private root: TreeNode<T> | null = null

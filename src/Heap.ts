@@ -1,4 +1,4 @@
-export type Compare<T> = (a: T, b: T) => boolean
+import { Compare } from './types'
 
 export class Heap<T> {
   private map = new Map<T, number>()
@@ -21,7 +21,7 @@ export class Heap<T> {
     const { heap, compare } = this, value = heap[index]
     while (true) {
       const parent = (index - 1) >> 1
-      if (parent < 0 || compare(heap[parent], value)) break
+      if (parent < 0 || compare(heap[parent], value) < 0) break
       this.set(index, heap[parent])
       index = parent
     }
@@ -32,8 +32,8 @@ export class Heap<T> {
     const { heap, compare } = this, value = heap[index], size = this.size()
     let left: number
     while ((left = (index << 1) + 1) < size) {
-      const child = left + 1 < size && compare(heap[left + 1], heap[left]) ? left + 1 : left
-      if (compare(value, heap[child])) break
+      const child = left + 1 < size && compare(heap[left + 1], heap[left]) < 0 ? left + 1 : left
+      if (compare(value, heap[child]) < 0) break
       this.set(index, heap[child])
       index = child
     }
