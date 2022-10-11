@@ -56,3 +56,4 @@ list[':-5:-1']  // [4, 3, 2, 1]
 - [MiSet](https://github.com/Yuki-0505/micro-class/blob/main/tests/MiSet.spec.ts)
 - [Heap](https://github.com/Yuki-0505/micro-class/blob/main/tests/Heap.spec.ts)
 - [MergeIntervalTree](https://github.com/Yuki-0505/micro-class/blob/main/tests/MergeIntervalTree.spec.ts)
+- [BinarySearchTree](https://github.com/Yuki-0505/micro-class/blob/main/tests/BinarySearchTree.spec.ts)
