@@ -13,7 +13,7 @@
 
 > 22/10/08
 
-- [ ] BinSearchTree
+- [x] BinarySearchTree
 - [ ] SegmentTree
 - [ ] TreeSet
 - [ ] Vector
