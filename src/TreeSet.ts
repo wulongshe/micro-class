@@ -23,16 +23,16 @@ export class TreeSet<T> extends BinarySearchTree<T> implements MiSet<T> {
   }
 
   static equals = MiSet.equals
-  static union = this.createStaticFunc('union')
-  static difference = this.createStaticFunc('difference')
-  static intersect = this.createStaticFunc('intersect')
-  static xor = this.createStaticFunc('xor')
+  static union = TreeSet.createStaticFunc('union')
+  static difference = TreeSet.createStaticFunc('difference')
+  static intersect = TreeSet.createStaticFunc('intersect')
+  static xor = TreeSet.createStaticFunc('xor')
 
   equals = equals
-  union = union as ReplaceReturn<typeof union, typeof this>
-  difference = difference as ReplaceReturn<typeof difference, typeof this>
-  intersect = intersect as ReplaceReturn<typeof intersect, typeof this>
-  xor = xor as ReplaceReturn<typeof xor, typeof this>
+  union = union as ReplaceReturn<typeof union, this>
+  difference = difference as ReplaceReturn<typeof difference, this>
+  intersect = intersect as ReplaceReturn<typeof intersect, this>
+  xor = xor as ReplaceReturn<typeof xor, this>
 
   get [Symbol.iterator]() {
     this.iterableIterator = TreeSet.createIterableIterator(this.root, ({ value }) => value, this.stack)
