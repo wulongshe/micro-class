@@ -1,4 +1,4 @@
-import { Compare, TreeNode, Interval } from './types'
+import type { Compare, TreeNode, Interval } from './types'
 
 export class MergeIntervalTree<T> {
   private root: TreeNode<Interval<T>> | null = null
