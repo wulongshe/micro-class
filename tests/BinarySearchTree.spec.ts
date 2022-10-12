@@ -86,7 +86,7 @@ test('BinarySearchTree values', async () => {
   expect(next()).toEqual({ value: void 0, done: true })
 
   const ret: number[] = []
-  for (const val of tree.values()) {
+  for (const val of tree) {
     ret.push(val)
   }
   expect(ret).toEqual([1, 2, 4, 5, 6, 7])

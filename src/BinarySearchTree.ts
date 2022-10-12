@@ -1,4 +1,5 @@
 import { Compare, Trace } from './types'
+import { Stack } from './Stack'
 
 export type TreeNode<T> = {
   value: T
@@ -7,8 +8,9 @@ export type TreeNode<T> = {
   right: TreeNode<T> | null
 }
 
-export class BinarySearchTree<T> {
+export class BinarySearchTree<T> implements IterableIterator<T> {
   private root: TreeNode<T> | null = null
+  private stack: Stack<TreeNode<T>> = new Stack()
   private flag = false
   constructor(
     private compare: Compare<T>,
@@ -16,6 +18,7 @@ export class BinarySearchTree<T> {
     private enableRepeat = true
   ) {
     items.forEach(val => this.insert(val))
+    this.next = this.next.bind(this)
   }
 
   private _insert(value: T, node = this.root): TreeNode<T> {
@@ -65,7 +68,9 @@ export class BinarySearchTree<T> {
   }
   remove(value: T) {
     this.root = this._remove(value)
+    const { flag } = this
     this.flag = false
+    return flag
   }
 
   update(oldVal: T, newVal: T) {
@@ -119,26 +124,25 @@ export class BinarySearchTree<T> {
     this._traverse(trace)
   }
 
+  private recursive(node = this.root) {
+    while (node) {
+      this.stack.push(node)
+      node = node.left
+    }
+  }
+  [Symbol.iterator]() {
+    this.stack.clear()
+    this.recursive()
+    return this
+  }
+  next(): IteratorResult<T> {
+    const node = this.stack.pop()
+    if (!node) return { value: void 0, done: true }
+    this.recursive(node.right)
+    return { value: node.value, done: false }
+  }
   values(): IterableIterator<T> {
-    const stack: TreeNode<T>[] = []
-    const recursive = (node = this.root) => {
-      while (node) {
-        stack.push(node)
-        node = node.left
-      }
-    }
-
-    const iterableIterator: IterableIterator<T> = {
-      [Symbol.iterator]: () => (recursive(), iterableIterator),
-      next: () => {
-        const node = stack.pop()
-        if (!node) return { value: void 0, done: true }
-        recursive(node.right)
-        return { value: node.value, done: false }
-      }
-    }
-
-    return iterableIterator
+    return this
   }
 
   size(): number {
