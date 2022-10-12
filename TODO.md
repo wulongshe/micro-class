@@ -11,13 +11,16 @@
 - [x] Heap
 - [x] MiSet
 
-> 22/10/08
-
-- [x] BinarySearchTree
-- [ ] SegmentTree
-- [ ] TreeSet
-- [ ] Vector
-
 > 22/10/09
 
 - [x] MergeIntervalTree
+
+> 22/10/11
+
+- [x] BinarySearchTree
+
+> next
+
+- [ ] SegmentTree
+- [ ] TreeSet
+- [ ] Vector
