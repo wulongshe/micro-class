@@ -40,12 +40,6 @@ test('TreeSet values', async () => {
   expect(it.next()).toEqual({ value: 6, done: false })
   expect(it.next()).toEqual({ value: 7, done: false })
   expect(it.next()).toEqual({ value: void 0, done: true })
-
-  const ret: number[] = []
-  for (const val of set) {
-    ret.push(val)
-  }
-  expect(ret).toEqual([1, 2, 4, 5, 6, 7])
 })
 
 test('TreeSet equals', async () => {
@@ -54,19 +48,33 @@ test('TreeSet equals', async () => {
   expect(set1.equals(set2)).toBe(true)
 })
 
-test('TreeSet union difference intersect xor', async () => {
-  const compare = (a: number, b: number) => a - b
-  const set1 = new TreeSet(compare, [0, 1, 2])
-  const set2 = new TreeSet(compare, [1, 2, 3])
-  set1.union(set2)
-  expect([...TreeSet.union(compare, set1, set2)]).toEqual([0, 1, 2, 3])
-  expect([...TreeSet.difference(compare, set1, set2)]).toEqual([0])
-  // expect([...TreeSet.intersect(compare, set1, set2)]).toEqual([1, 2])
-  // expect([...TreeSet.xor(compare, set1, set2)]).toEqual([0, 3])
+test('TreeSet add delete has size clear', async () => {
+  const set = new TreeSet((a, b) => a - b, [0, 1, 2])
+
+  set.add(4)
+  expect([...set]).toEqual([0, 1, 2, 4])
+
+  expect(set.delete(2)).toBe(true)
+  expect(set.delete(2)).toBe(false)
+  expect(set.delete(0)).toBe(true)
+
+  expect([...set]).toEqual([1, 4])
+
+  expect(set.has(2)).toBe(false)
+  expect(set.has(4)).toBe(true)
+
+  expect(set.size).toBe(2)
+
+  set.clear()
+  expect(set.size).toBe(0)
 })
 
-test.skip('TreeSet add delete', async () => {
-  const set1 = new TreeSet((a, b) => a - b, [0, 1, 2])
-  const set2 = new TreeSet((a, b) => a - b, [1, 2, 3])
-  expect([...set1.union(set2).values()]).toEqual([0, 1, 2, 3])
+test('TreeSet union difference intersect xor', async () => {
+  const compare = (a: number, b: number) => a - b
+  const set1 = new TreeSet(compare, [0, 1, 2, 3])
+  const set2 = new TreeSet(compare, [2, 3, 4])
+  expect([...TreeSet.union(compare, set1, set2)]).toEqual([0, 1, 2, 3, 4])
+  expect([...TreeSet.difference(compare, set1, set2)]).toEqual([0, 1])
+  expect([...TreeSet.intersect(compare, set1, set2)]).toEqual([2, 3])
+  expect([...TreeSet.xor(compare, set1, set2)]).toEqual([0, 1, 4])
 })

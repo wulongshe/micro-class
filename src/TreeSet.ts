@@ -3,11 +3,11 @@ import { MiSet } from './MiSet'
 import { Stack } from './Stack'
 import type { Compare, ReplaceReturn } from './types'
 import type { TreeNode } from './BinarySearchTree'
-
+import type { MiSetMethodNames } from './MiSet'
 
 const { equals, union, difference, intersect, xor } = MiSet.prototype
 
-export class TreeSet<T> extends BinarySearchTree<T> implements MiSet<T>, IterableIterator<T> {
+export class TreeSet<T> extends BinarySearchTree<T> implements MiSet<T> {
   [Symbol.toStringTag] = 'TreeSet'
   private stack = new Stack<TreeNode<T>>()
   private iterableIterator = TreeSet.createIterableIterator(this.root, ({ value }) => value, this.stack)
@@ -16,50 +16,33 @@ export class TreeSet<T> extends BinarySearchTree<T> implements MiSet<T>, Iterabl
     super(compare, items, false)
   }
 
+  private static createStaticFunc(method: MiSetMethodNames, self = this) {
+    return function <T, S extends Set<T>>(compare: Compare<T>, first: Set<T>, ...that: S[]) {
+      return that.reduce((prev, curr) => prev[method](curr), new self(compare, [...first]))
+    }
+  }
+
+  static equals = MiSet.equals
+  static union = this.createStaticFunc('union')
+  static difference = this.createStaticFunc('difference')
+  static intersect = this.createStaticFunc('intersect')
+  static xor = this.createStaticFunc('xor')
+
+  equals = equals
+  union = union as ReplaceReturn<typeof union, typeof this>
+  difference = difference as ReplaceReturn<typeof difference, typeof this>
+  intersect = intersect as ReplaceReturn<typeof intersect, typeof this>
+  xor = xor as ReplaceReturn<typeof xor, typeof this>
+
   get [Symbol.iterator]() {
+    this.iterableIterator = TreeSet.createIterableIterator(this.root, ({ value }) => value, this.stack)
     return this.iterableIterator[Symbol.iterator]
   }
   get next() {
     return this.iterableIterator.next
   }
 
-  equals(that: Set<T>): boolean {
-    return MiSet.prototype.equals.call(this, that)
-  }
-  static equals<T, S extends Set<T>>(first: S, second: S): boolean {
-    return MiSet.equals(first, second)
-  }
-  // union = union as ReplaceReturn<typeof union, TreeSet<T>>
-  union<S extends Set<T>>(that: S): TreeSet<T> {
-    MiSet.prototype.union.call(this, that)
-    return this
-  }
-  static union<T, S extends Set<T>>(compare: Compare<T>, first: Set<T>, ...that: S[]): TreeSet<T> {
-    return that.reduce((prev, curr) => prev.union(curr), new TreeSet<T>(compare, [...first]))
-  }
-  difference<S extends Set<T>>(that: S): TreeSet<T> {
-    MiSet.prototype.difference.call(this, that)
-    return this
-  }
-  static difference<T, S extends Set<T>>(compare: Compare<T>, first: Set<T>, ...that: S[]): TreeSet<T> {
-    return that.reduce((prev, curr) => prev.difference(curr), new TreeSet<T>(compare, [...first]))
-  }
-  intersect<S extends Set<T>>(that: S): TreeSet<T> {
-    MiSet.prototype.intersect.call(this, that)
-    return this
-  }
-  static intersect<T, S extends Set<T>>(compare: Compare<T>, first: Set<T>, ...that: S[]): TreeSet<T> {
-    return that.reduce((prev, curr) => prev.intersect(curr), new TreeSet<T>(compare, [...first]))
-  }
-  xor<S extends Set<T>>(that: S): TreeSet<T> {
-    MiSet.prototype.xor.call(this, that)
-    return this
-  }
-  static xor<T, S extends Set<T>>(compare: Compare<T>, first: Set<T>, ...that: S[]): TreeSet<T> {
-    return that.reduce((prev, curr) => prev.xor(curr), new TreeSet<T>(compare, [...first]))
-  }
-
-  add(value: T): this {
+  add(value: T) {
     this.insert(value)
     return this
   }
