@@ -1,4 +1,4 @@
-import { Compare, Trace } from './types'
+import type { Compare, Trace } from './types'
 
 export type TreeNode<T> = {
   value: T

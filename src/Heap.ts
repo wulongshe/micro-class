@@ -1,4 +1,4 @@
-import { Compare } from './types'
+import type { Compare } from './types'
 
 export class Heap<T> {
   private map = new Map<T, number>()
