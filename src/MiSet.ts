@@ -1,6 +1,19 @@
+export type MiSetMethodNames = 'union' | 'difference' | 'intersect' | 'xor'
+
 export class MiSet<T> extends Set<T> {
+  private static createStaticFunc(method: MiSetMethodNames, self = this) {
+    return function <T, S extends Set<T>>(first: Set<T>, ...that: S[]) {
+      return that.reduce((prev, curr) => prev[method](curr), new self([...first]))
+    }
+  }
+  static union = this.createStaticFunc('union')
+  static difference = this.createStaticFunc('difference')
+  static intersect = this.createStaticFunc('intersect')
+  static xor = this.createStaticFunc('xor')
+
+
   equals(that: Set<T>): boolean {
-    return MiSet.equals(this, that)
+    return (this.constructor as any).equals(this, that)
   }
 
   static equals<T, S extends Set<T>>(first: S, second: S): boolean {
@@ -18,31 +31,23 @@ export class MiSet<T> extends Set<T> {
   }
 
   // 并集
-  union<S extends Set<T>>(that: S): MiSet<T> {
+  union<S extends Set<T>>(that: S) {
     for (const val of that) {
       this.add(val)
     }
     return this
   }
 
-  static union<T, S extends Set<T>>(first: Set<T>, ...that: S[]): MiSet<T> {
-    return that.reduce((prev, curr) => prev.union(curr), new MiSet<T>([...first]))
-  }
-
   // 差集
-  difference<S extends Set<T>>(that: S): MiSet<T> {
+  difference<S extends Set<T>>(that: S) {
     for (const val of that) {
       this.delete(val)
     }
     return this
   }
 
-  static difference<T, S extends Set<T>>(first: Set<T>, ...that: S[]): MiSet<T> {
-    return that.reduce((prev, curr) => prev.difference(curr), new MiSet<T>([...first]))
-  }
-
   // 交集
-  intersect<S extends Set<T>>(that: S): MiSet<T> {
+  intersect<S extends Set<T>>(that: S) {
     for (const val of this) {
       if (!that.has(val)) {
         this.delete(val)
@@ -51,12 +56,8 @@ export class MiSet<T> extends Set<T> {
     return this
   }
 
-  static intersect<T, S extends Set<T>>(first: Set<T>, ...that: S[]): MiSet<T> {
-    return that.reduce((prev, curr) => prev.intersect(curr), new MiSet<T>([...first]))
-  }
-
   // 异或
-  xor<S extends Set<T>>(that: S): MiSet<T> {
+  xor<S extends Set<T>>(that: S) {
     for (const val of that) {
       if (this.has(val)) {
         this.delete(val)
@@ -65,10 +66,6 @@ export class MiSet<T> extends Set<T> {
       }
     }
     return this
-  }
-
-  static xor<T, S extends Set<T>>(first: Set<T>, ...that: S[]): MiSet<T> {
-    return that.reduce((prev, curr) => prev.xor(curr), new MiSet<T>([...first]))
   }
 
   toString(): string {
