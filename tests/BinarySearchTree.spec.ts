@@ -73,21 +73,3 @@ test('BinarySearchTree peek', async () => {
 
   expect(tree.peek(2)).toBe(4)
 })
-
-test('BinarySearchTree values', async () => {
-  const tree = new BinarySearchTree<number>((a, b) => a - b, [4, 5, 2, 1, 6, 7])
-  const { next } = tree.values()[Symbol.iterator]()
-  expect(next()).toEqual({ value: 1, done: false })
-  expect(next()).toEqual({ value: 2, done: false })
-  expect(next()).toEqual({ value: 4, done: false })
-  expect(next()).toEqual({ value: 5, done: false })
-  expect(next()).toEqual({ value: 6, done: false })
-  expect(next()).toEqual({ value: 7, done: false })
-  expect(next()).toEqual({ value: void 0, done: true })
-
-  const ret: number[] = []
-  for (const val of tree) {
-    ret.push(val)
-  }
-  expect(ret).toEqual([1, 2, 4, 5, 6, 7])
-})
