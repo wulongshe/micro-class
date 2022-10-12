@@ -1,5 +1,4 @@
 import { Compare, Trace } from './types'
-import { Stack } from './Stack'
 
 export type TreeNode<T> = {
   value: T
@@ -8,17 +7,16 @@ export type TreeNode<T> = {
   right: TreeNode<T> | null
 }
 
-export class BinarySearchTree<T> implements IterableIterator<T> {
-  private root: TreeNode<T> | null = null
-  private stack: Stack<TreeNode<T>> = new Stack()
+export class BinarySearchTree<T> {
+  protected root: TreeNode<T> | null = null
   private flag = false
+
   constructor(
     private compare: Compare<T>,
     items: T[] = [],
     private enableRepeat = true
   ) {
     items.forEach(val => this.insert(val))
-    this.next = this.next.bind(this)
   }
 
   private _insert(value: T, node = this.root): TreeNode<T> {
@@ -106,7 +104,7 @@ export class BinarySearchTree<T> implements IterableIterator<T> {
     }
   }
   peek(index = 0): T | null {
-    const size = this.size()
+    const size = this.size
     if (size === 0) return null
     index < 0 && (index = (index + size) % size)
     if (index < 0) return null
@@ -124,32 +122,11 @@ export class BinarySearchTree<T> implements IterableIterator<T> {
     this._traverse(trace)
   }
 
-  private recursive(node = this.root) {
-    while (node) {
-      this.stack.push(node)
-      node = node.left
-    }
-  }
-  [Symbol.iterator]() {
-    this.stack.clear()
-    this.recursive()
-    return this
-  }
-  next(): IteratorResult<T> {
-    const node = this.stack.pop()
-    if (!node) return { value: void 0, done: true }
-    this.recursive(node.right)
-    return { value: node.value, done: false }
-  }
-  values(): IterableIterator<T> {
-    return this
-  }
-
-  size(): number {
+  get size(): number {
     return this.root ? this.root.count : 0
   }
 
   isEmpty(): boolean {
-    return this.size() === 0
+    return this.size === 0
   }
 }
