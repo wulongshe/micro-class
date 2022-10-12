@@ -48,15 +48,17 @@ test('TreeSet equals', async () => {
   expect(set1.equals(set2)).toBe(true)
 })
 
-test('TreeSet add delete has size clear', async () => {
+test('TreeSet add delete peek has size clear', async () => {
   const set = new TreeSet((a, b) => a - b, [0, 1, 2])
 
   set.add(4)
   expect([...set]).toEqual([0, 1, 2, 4])
 
   expect(set.delete(2)).toBe(true)
+  expect(set.peek()).toBe(0)
   expect(set.delete(2)).toBe(false)
   expect(set.delete(0)).toBe(true)
+  expect(set.peek()).toBe(1)
 
   expect([...set]).toEqual([1, 4])
 
