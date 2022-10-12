@@ -9,3 +9,7 @@ export type TreeNode<T> = {
   left: TreeNode<T> | null
   right: TreeNode<T> | null
 }
+
+export type ReplaceReturn<T extends (...args: any[]) => any, R = unknown> = T extends (...args: infer P) => any ? (...args: P) => R : never
+
+export type ReplaceArguments<T extends (...args: any[]) => any, P extends any[] = unknown[]> = T extends (...args: P) => infer R ? (...args: P) => R : never
