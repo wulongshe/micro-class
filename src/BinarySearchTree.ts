@@ -128,18 +128,17 @@ export class BinarySearchTree<T> {
       }
     }
 
-    const iterator = () => ({
-      [Symbol.iterator]: iterator,
-      next: (): IteratorResult<T, undefined> => {
+    const iterableIterator: IterableIterator<T> = {
+      [Symbol.iterator]: () => (recursive(), iterableIterator),
+      next: () => {
         const node = stack.pop()
         if (!node) return { value: void 0, done: true }
         recursive(node.right)
         return { value: node.value, done: false }
       }
-    })
+    }
 
-    recursive()
-    return iterator()
+    return iterableIterator
   }
 
   size(): number {
