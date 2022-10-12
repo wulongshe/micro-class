@@ -6,10 +6,10 @@ export class MiSet<T> extends Set<T> {
       return that.reduce((prev, curr) => prev[method](curr), new self([...first]))
     }
   }
-  static union = this.createStaticFunc('union')
-  static difference = this.createStaticFunc('difference')
-  static intersect = this.createStaticFunc('intersect')
-  static xor = this.createStaticFunc('xor')
+  static union = MiSet.createStaticFunc('union')
+  static difference = MiSet.createStaticFunc('difference')
+  static intersect = MiSet.createStaticFunc('intersect')
+  static xor = MiSet.createStaticFunc('xor')
 
 
   equals(that: Set<T>): boolean {
