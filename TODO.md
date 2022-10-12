@@ -19,8 +19,11 @@
 
 - [x] BinarySearchTree
 
+> 22/10/12
+
+- [x] TreeSet
+
 > next
 
 - [ ] SegmentTree
-- [ ] TreeSet
 - [ ] Vector
