@@ -1,9 +1,14 @@
 export class Stack<T> {
   private count = 0
   private items: { [key: number]: T } = {}
+  private _pushed = 0
+  get pushed() {
+    return this._pushed
+  }
 
   push(element: T) {
     this.items[this.count++] = element
+    this._pushed++
   }
 
   pop(): T | null {
