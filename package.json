@@ -22,6 +22,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "publish:run": "pnpm build & pnpm publish",
     "test": "vitest",
     "test:run": "vitest run"
   },
