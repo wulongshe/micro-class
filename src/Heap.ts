@@ -96,11 +96,6 @@ export class Heap<T> {
   }
 
   toString(): string {
-    if (this.size() === 0) return '[]'
-    let objString = `${this.heap[0]}`
-    for (let i = 1; i < this.size(); i++) {
-      objString = `${objString},${this.heap[i]}`
-    }
-    return `[${objString}]`
+    return `[${this.heap.join(',')}]`
   }
 }

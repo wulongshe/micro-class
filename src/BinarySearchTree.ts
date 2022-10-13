@@ -129,4 +129,10 @@ export class BinarySearchTree<T> {
   isEmpty(): boolean {
     return this.size === 0
   }
+
+  toString() {
+    const ret: T[] = []
+    this.traverse(val => ret.push(val))
+    return `<${ret.join(',')}>`
+  }
 }

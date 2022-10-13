@@ -1,13 +1,17 @@
+export type LikeArray<T> = {
+  [key: number]: T
+  length: number
+}
+
 export class Stack<T> {
-  private count = 0
-  private items: { [key: number]: T } = {}
+  private items: LikeArray<T> = { length: 0 }
   private _pushed = 0
   get pushed() {
     return this._pushed
   }
 
   push(element: T) {
-    this.items[this.count++] = element
+    this.items[this.items.length++] = element
     this._pushed++
   }
 
@@ -15,9 +19,9 @@ export class Stack<T> {
     if (this.isEmpty()) {
       return null
     }
-    this.count--
-    const result = this.items[this.count]
-    delete this.items[this.count]
+    this.items.length--
+    const result = this.items[this.items.length]
+    delete this.items[this.items.length]
     return result
   }
 
@@ -25,30 +29,23 @@ export class Stack<T> {
     if (this.isEmpty()) {
       return null
     }
-    return this.items[this.count - 1]
+    return this.items[this.items.length - 1]
   }
 
   isEmpty(): boolean {
-    return this.count === 0
+    return this.items.length === 0
   }
 
   size(): number {
-    return this.count
+    return this.items.length
   }
 
   clear() {
-    this.items = {}
-    this.count = 0
+    this.items = { length: 0 }
+    this.items.length = 0
   }
 
   toString(): string {
-    if (this.isEmpty()) {
-      return '[]'
-    }
-    let objString = `${this.items[0]}`
-    for (let i = 1; i < this.count; i++) {
-      objString = `${objString},${this.items[i]}`
-    }
-    return `[${objString}]`
+    return `[${[].join.call(this.items, ',')}]`
   }
 }

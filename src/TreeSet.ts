@@ -99,10 +99,6 @@ export class TreeSet<T> extends BinarySearchTree<T> implements MiSet<T> {
   }
 
   toString() {
-    const arr: T[] = []
-    for (const val of this) {
-      arr.push(val)
-    }
-    return `{${arr.join(',')}}`
+    return `{${[...this].join(',')}}`
   }
 }

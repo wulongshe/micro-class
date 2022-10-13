@@ -64,13 +64,6 @@ export class List<T> extends Array<T> {
   }
 
   toString(): string {
-    if (this.length === 0) {
-      return '[]'
-    }
-    let objString = `${this[0]}`
-    for (let i = 1; i < this.length; i++) {
-      objString = `${objString},${this[i]}`
-    }
-    return `[${objString}]`
+    return `[${this.join(',')}]`
   }
 }
