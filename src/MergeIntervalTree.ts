@@ -79,9 +79,8 @@ export class MergeIntervalTree<T> {
   }
 
   toString(): string {
-    const arr: Interval<T>[] = []
-    this.traverse(value => arr.push(value))
-
-    return '[' + arr.reduce((prev, [start, end]) => `${prev},[${start},${end})`, '').slice(1) + ']'
+    const ret: string[] = []
+    this.traverse(([start, end]) => ret.push(`[${start},${end})`))
+    return `<${ret.join(',')}>`
   }
 }

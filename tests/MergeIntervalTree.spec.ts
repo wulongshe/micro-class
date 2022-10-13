@@ -1,5 +1,6 @@
 import { test, expect } from 'vitest'
-import { Interval, MergeIntervalTree } from '../src'
+import { MergeIntervalTree } from '../src'
+import type { Interval } from '../src/types'
 
 test('MergeIntervalTree', async () => {
   const tree = new MergeIntervalTree<number>((a, b) => a - b)
@@ -54,10 +55,10 @@ test('MergeIntervalTree', async () => {
 test('MergeIntervalTree', async () => {
   const tree = new MergeIntervalTree<number>((a, b) => a - b)
 
-  expect(tree.toString()).toBe('[]')
+  expect(tree.toString()).toBe('<>')
 
   tree.join(3, 5)
   tree.join(5, 7)
   tree.join(9, 15)
-  expect(tree.toString()).toBe('[[3,7),[9,15)]')
+  expect(tree.toString()).toBe('<[3,7),[9,15)>')
 })

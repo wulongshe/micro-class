@@ -69,13 +69,6 @@ export class MiSet<T> extends Set<T> {
   }
 
   toString(): string {
-    if (this.size === 0) {
-      return '{}'
-    }
-    let objString = ''
-    for (const val of this) {
-      objString = `${objString},${val}`
-    }
-    return `{${objString.slice(1)}}`
+    return `{${[...this].join(',')}}`
   }
 }
