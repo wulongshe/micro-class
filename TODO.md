@@ -23,7 +23,11 @@
 
 - [x] TreeSet
 
+> 22/10/13
+
+- [x] Vector
+
 > next
 
 - [ ] SegmentTree
-- [ ] Vector
+- [ ] LinkList
