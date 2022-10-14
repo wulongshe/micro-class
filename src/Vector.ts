@@ -47,6 +47,15 @@ export class Vector<T extends Tuples<[2, 3], number>> {
   static crossProduct<T extends Tuple<3, number>>(first: T | Vector<T>, second: T | Vector<T>) {
     return new Vector(first).crossProduct(second as T)
   }
+  static equals<T extends Tuples<[2, 3], number>>(first: T | Vector<T>, second: T | Vector<T>) {
+    return new Vector(first).equals(second as T)
+  }
+  static isParallel<T extends Tuples<[2, 3], number>>(first: T | Vector<T>, second: T | Vector<T>) {
+    return new Vector(first).isParallel(second as T)
+  }
+  static isVertical<T extends Tuples<[2, 3], number>>(first: T | Vector<T>, second: T | Vector<T>) {
+    return new Vector(first).isVertical(second as T)
+  }
 
   magnitude() {
     return Math.sqrt(this.tuple.map(v => v * v).reduce((prev, curr) => prev + curr))

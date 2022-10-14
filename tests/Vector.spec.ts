@@ -58,4 +58,13 @@ test('Vector equals isParallel isVertical', async () => {
 
   expect(v2.isVertical([-2, 1])).toBe(true)
   expect(v3.isVertical([-3, 3, -1])).toBe(true)
+
+  expect(Vector.equals(v2, [2, 1])).toBe(false)
+  expect(Vector.equals(v3, [1, 2, 3])).toBe(true)
+
+  expect(Vector.isParallel(v2, [-1, -2])).toBe(true)
+  expect(Vector.isParallel(v3, [2, 4, 6])).toBe(true)
+
+  expect(Vector.isVertical(v2, [-2, 1])).toBe(true)
+  expect(Vector.isVertical(v3, [-3, 3, -1])).toBe(true)
 })
