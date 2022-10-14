@@ -118,4 +118,7 @@ export class Vector<T extends Tuples<[2, 3], number>> {
       return reverse ? that.reverse() : that
     }
   }) as any
+  toString() {
+    return `[${this.tuple.join(',')}]`
+  }
 }
