@@ -9,8 +9,7 @@ const { equals, union, difference, intersect, xor } = MiSet.prototype
 
 export class TreeSet<T> extends BinarySearchTree<T> implements MiSet<T> {
   [Symbol.toStringTag] = 'TreeSet'
-  private stack = new Stack<TreeNode<T>>()
-  private iterableIterator = TreeSet.createIterableIterator(this.root, ({ value }) => value, this.stack)
+  private iterableIterator = TreeSet.createIterableIterator(this.root, ({ value }) => value/* , this.stack */)
 
   constructor(compare: Compare<T>, items: T[] = []) {
     super(compare, items, false)
@@ -35,7 +34,7 @@ export class TreeSet<T> extends BinarySearchTree<T> implements MiSet<T> {
   xor = xor as ReplaceReturn<typeof xor, this>
 
   get [Symbol.iterator]() {
-    this.iterableIterator = TreeSet.createIterableIterator(this.root, ({ value }) => value, this.stack)
+    this.iterableIterator = TreeSet.createIterableIterator(this.root, ({ value }) => value)
     return this.iterableIterator[Symbol.iterator]
   }
   get next() {
@@ -48,7 +47,6 @@ export class TreeSet<T> extends BinarySearchTree<T> implements MiSet<T> {
   }
   clear(): void {
     this.root = null
-    this.stack.clear()
   }
   delete(value: T): boolean {
     return this.remove(value)
