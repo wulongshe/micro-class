@@ -20,7 +20,7 @@ export class List<T> extends Array<T> {
   }
 
   slice(start?: number, end?: number, step?: number): List<T> {
-    [start, end, step] = this.sliceDefaultValue(start, end, step)
+    [start, end, step] = List.sliceDefaultValue(this.length, start, end, step)
     const list = new List<T>()
     if (step === 0) throw Error('slice step cannot be zero')
     for (let i = 0; step > 0 ? start < end : start > end; start += step) {
@@ -28,8 +28,7 @@ export class List<T> extends Array<T> {
     }
     return list
   }
-  private sliceDefaultValue(start: number | undefined, end: number | undefined, step = 1) {
-    const len = this.length
+  static sliceDefaultValue(len: number, start: number | undefined, end: number | undefined, step = 1) {
     const offset = (index: number | undefined, val1: number, val2: number) => {
       return index === void 0
         ? step >= 0 ? val1 : val2
