@@ -27,7 +27,10 @@
 
 - [x] Vector
 
+> 22/10/16
+
+- [x] LinkList
+
 > next
 
 - [ ] SegmentTree
-- [ ] LinkList

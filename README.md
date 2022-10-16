@@ -59,3 +59,4 @@ list[':-5:-1']  // [4, 3, 2, 1]
 - [BinarySearchTree](https://github.com/Yuki-0505/micro-class/blob/main/tests/BinarySearchTree.spec.ts)
 - [TreeSet](https://github.com/Yuki-0505/micro-class/blob/main/tests/TreeSet.spec.ts)
 - [Vector](https://github.com/Yuki-0505/micro-class/blob/main/tests/Vector.spec.ts)
+- [LinkList](https://github.com/Yuki-0505/micro-class/blob/main/tests/LinkList.spec.ts)
