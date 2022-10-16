@@ -32,7 +32,7 @@ export class List<T> extends Array<T> {
     const offset = (index: number | undefined, val1: number, val2: number) => {
       return index === void 0
         ? step >= 0 ? val1 : val2
-        : Math.max(0, (index + len) % len)
+        : index >= 0 ? index : (index + len) % len
     }
     return [offset(start, 0, len - 1), offset(end, len, -1), step]
   }
