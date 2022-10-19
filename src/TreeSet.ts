@@ -2,7 +2,7 @@ import { BinarySearchTree } from './BinarySearchTree'
 import { MiSet } from './MiSet'
 import { Stack } from './Stack'
 import type { Compare, ReplaceReturn } from './types'
-import type { TreeNode } from './BinarySearchTree'
+import type { BinaryTreeNode } from './BinarySearchTree'
 import type { MiSetMethodNames } from './MiSet'
 
 const { equals, union, difference, intersect, xor } = MiSet.prototype
@@ -59,16 +59,16 @@ export class TreeSet<T> extends BinarySearchTree<T> implements MiSet<T> {
     return this.search(value) >= 0
   }
 
-  private static recursive<T>(stack: Stack<TreeNode<T>>, node: TreeNode<T> | null) {
+  private static recursive<T>(stack: Stack<BinaryTreeNode<T>>, node: BinaryTreeNode<T> | null) {
     while (node) {
       stack.push(node)
       node = node.left
     }
   }
   private static createIterableIterator<T, R>(
-    root: TreeNode<T> | null,
-    get: (value: TreeNode<T>) => R,
-    stack = new Stack<TreeNode<T>>()
+    root: BinaryTreeNode<T> | null,
+    get: (value: BinaryTreeNode<T>) => R,
+    stack = new Stack<BinaryTreeNode<T>>()
   ): IterableIterator<R> {
     const iterableIterator: IterableIterator<R> = {
       [Symbol.iterator]: () => {

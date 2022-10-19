@@ -1,14 +1,14 @@
 import type { Compare, Trace } from './types'
 
-export type TreeNode<T> = {
+export type BinaryTreeNode<T> = {
   value: T
   count: number
-  left: TreeNode<T> | null
-  right: TreeNode<T> | null
+  left: BinaryTreeNode<T> | null
+  right: BinaryTreeNode<T> | null
 }
 
 export class BinarySearchTree<T> {
-  protected root: TreeNode<T> | null = null
+  protected root: BinaryTreeNode<T> | null = null
   private flag = false
 
   constructor(
@@ -19,7 +19,7 @@ export class BinarySearchTree<T> {
     items.forEach(val => this.insert(val))
   }
 
-  private _insert(value: T, node = this.root): TreeNode<T> {
+  private _insert(value: T, node = this.root): BinaryTreeNode<T> {
     if (!node) {
       this.flag = true
       return { value, count: 1, left: null, right: null }
@@ -40,7 +40,7 @@ export class BinarySearchTree<T> {
     this.flag = false
   }
 
-  private _remove(value: T, node = this.root): TreeNode<T> | null {
+  private _remove(value: T, node = this.root): BinaryTreeNode<T> | null {
     if (!node) return null
     const eq = this.compare(value, node.value)
     if (eq < 0) {
