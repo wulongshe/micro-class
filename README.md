@@ -48,15 +48,16 @@ list[':-5:-1']  // [4, 3, 2, 1]
 
 ## 测试用例
 
-> 更多使用方法请参考 [测试用例](https://github.com/Yuki-0505/micro-class/tree/main/tests)
+> 更多使用方法请参考 [测试用例](https://github.com/wulongshe/micro-class/tree/main/tests)
 
-- [UnionQuerySet](https://github.com/Yuki-0505/micro-class/blob/main/tests/UnionQuerySet.spec.ts)
-- [List](https://github.com/Yuki-0505/micro-class/blob/main/tests/List.spec.ts)
-- [Stack](https://github.com/Yuki-0505/micro-class/blob/main/tests/Stack.spec.ts)
-- [MiSet](https://github.com/Yuki-0505/micro-class/blob/main/tests/MiSet.spec.ts)
-- [Heap](https://github.com/Yuki-0505/micro-class/blob/main/tests/Heap.spec.ts)
-- [MergeIntervalTree](https://github.com/Yuki-0505/micro-class/blob/main/tests/MergeIntervalTree.spec.ts)
-- [BinarySearchTree](https://github.com/Yuki-0505/micro-class/blob/main/tests/BinarySearchTree.spec.ts)
-- [TreeSet](https://github.com/Yuki-0505/micro-class/blob/main/tests/TreeSet.spec.ts)
-- [Vector](https://github.com/Yuki-0505/micro-class/blob/main/tests/Vector.spec.ts)
-- [LinkList](https://github.com/Yuki-0505/micro-class/blob/main/tests/LinkList.spec.ts)
+- [UnionQuerySet](https://github.com/wulongshe/micro-class/blob/main/tests/UnionQuerySet.spec.ts)
+- [List](https://github.com/wulongshe/micro-class/blob/main/tests/List.spec.ts)
+- [Stack](https://github.com/wulongshe/micro-class/blob/main/tests/Stack.spec.ts)
+- [MiSet](https://github.com/wulongshe/micro-class/blob/main/tests/MiSet.spec.ts)
+- [Heap](https://github.com/wulongshe/micro-class/blob/main/tests/Heap.spec.ts)
+- [MergeIntervalTree](https://github.com/wulongshe/micro-class/blob/main/tests/MergeIntervalTree.spec.ts)
+- [BinarySearchTree](https://github.com/wulongshe/micro-class/blob/main/tests/BinarySearchTree.spec.ts)
+- [TreeSet](https://github.com/wulongshe/micro-class/blob/main/tests/TreeSet.spec.ts)
+- [Vector](https://github.com/wulongshe/micro-class/blob/main/tests/Vector.spec.ts)
+- [LinkList](https://github.com/wulongshe/micro-class/blob/main/tests/LinkList.spec.ts)
+- [useCachePromise](https://github.com/wulongshe/micro-class/blob/main/tests/useCachePromise.spec.ts)

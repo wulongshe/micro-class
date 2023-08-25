@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'
-import { createCachePromise } from '../src'
+import { useCachePromise } from '../src'
 
 test('cache Promise', async () => {
   type Data = { key: string; value: number }
@@ -9,7 +9,7 @@ test('cache Promise', async () => {
   const sleep = async (time: number) => new Promise((resolve) => setTimeout(resolve, time))
 
   async function request(key: string, value: number) {
-    return new Promise<Data>(async (resolve, reject) => {
+    return new Promise<Data>(async (resolve) => {
       await sleep(100)
       const result = { key, value }
       response.push(result)
@@ -17,7 +17,7 @@ test('cache Promise', async () => {
     })
   }
 
-  const cacheRequest = createCachePromise(request)
+  const cacheRequest = useCachePromise(request)
 
   result.push(
     ...(await Promise.all([

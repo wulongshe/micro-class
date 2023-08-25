@@ -1,7 +1,7 @@
 import { cloneDeep } from 'lodash'
 import objectHash from 'object-hash'
 
-export function createCachePromise<T extends any[], R>(generator: (...data: T) => Promise<R>) {
+export function useCachePromise<T extends any[], R>(generator: (...data: T) => Promise<R>) {
   const cache = new Map<string, Promise<R>>()
   return async function (...data: T): Promise<R> {
     const key = objectHash(data)
