@@ -37,8 +37,14 @@
   },
   "devDependencies": {
     "@types/node": "^20.5.6",
+    "@types/object-hash": "^3.0.3",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
     "vitest": "^0.23.4"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.197",
+    "lodash": "^4.17.21",
+    "object-hash": "^3.0.0"
   }
 }
