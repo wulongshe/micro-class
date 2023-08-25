@@ -1,8 +1,8 @@
 {
   "name": "micro-class",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "author": "shewulong",
-  "license": "ISC",
+  "license": "MIT",
   "description": "扩展 js/ts 的 工具类 和 数据结构",
   "keywords": [
     "oop",
@@ -12,28 +12,32 @@
     "ts",
     "class"
   ],
-  "type": "commonjs",
-  "module": "src/index.ts",
+  "module": "dist/index.mjs",
   "main": "dist/index.js",
-  "types": "src/index.ts",
-  "repository": "https://github.com/Yuki-0505/micro-class.git",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "repository": "https://github.com/wulongshe/micro-class.git",
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
-    "build": "tsc",
-    "publish:run": "pnpm build & pnpm publish",
-    "test": "vitest",
-    "test:run": "vitest run"
+    "build": "tsup src/index.ts --dts --format cjs,esm --minify --clean",
+    "test": "vitest run"
   },
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "engines": {
     "node": ">=16.0.0"
   },
   "devDependencies": {
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2",
     "vitest": "^0.23.4"
   }
 }
