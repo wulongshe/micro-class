@@ -1,6 +1,6 @@
 {
   "name": "micro-class",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "author": "shewulong",
   "license": "MIT",
   "description": "扩展 js/ts 的 工具类 和 数据结构",
