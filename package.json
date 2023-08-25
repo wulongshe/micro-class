@@ -1,6 +1,6 @@
 {
   "name": "micro-class",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "author": "shewulong",
   "license": "MIT",
   "description": "扩展 js/ts 的 工具类 和 数据结构",
@@ -26,7 +26,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
-    "build": "tsup src/index.ts --dts --format cjs,esm --minify --clean",
+    "build": "tsup src/index.ts --dts --format cjs,esm --minify --clean && rimraf dist/index.d.mts",
     "test": "vitest run"
   },
   "files": [
@@ -38,6 +38,7 @@
   "devDependencies": {
     "@types/node": "^20.5.6",
     "@types/object-hash": "^3.0.3",
+    "rimraf": "^5.0.1",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
     "vitest": "^0.23.4"
