@@ -1,8 +1,9 @@
 {
   "name": "micro-class",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "author": "shewulong",
   "license": "MIT",
+  "type": "module",
   "description": "扩展 js/ts 的 工具类 和 数据结构",
   "keywords": [
     "oop",
@@ -17,7 +18,10 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": {
+        "import": "./dist/index.d.ts",
+        "require": "./dist/index.d.cts"
+      },
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     }
@@ -27,7 +31,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
-    "build": "tsup src/index.ts --dts --format cjs,esm --minify --clean && rimraf dist/index.d.mts",
+    "build": "tsup src/index.ts --dts --format cjs,esm --minify --clean",
     "test": "vitest run"
   },
   "files": [
